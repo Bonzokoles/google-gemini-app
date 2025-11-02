@@ -1,0 +1,7 @@
+{
+  "name": "Gemini AI Conversation Hub",
+  "description": "An advanced AI application featuring real-time voice conversations with Gemini's Live API and a versatile text-based chatbot with selectable AI agent personas for various tasks.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
