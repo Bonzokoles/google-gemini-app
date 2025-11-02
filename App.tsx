@@ -5,8 +5,9 @@ import { AGENTS } from './constants';
 import AgentSelector from './components/AgentSelector';
 import LiveChat from './components/LiveChat';
 import TextChat from './components/TextChat';
+import MCPIntegration from './components/MCPIntegration';
 
-type Tab = 'live' | 'text';
+type Tab = 'live' | 'text' | 'mcp';
 
 const App: React.FC = () => {
     const [selectedAgent, setSelectedAgent] = useState<Agent>(AGENTS[0]);
@@ -47,15 +48,19 @@ const App: React.FC = () => {
                             >
                                 Text Chat
                             </button>
+                            <button
+                                onClick={() => setActiveTab('mcp')}
+                                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 w-full ${activeTab === 'mcp' ? 'bg-blue-600 text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
+                            >
+                                MCP Integration
+                            </button>
                         </div>
                     </div>
                     
                     <div className="p-4 md:p-6 min-h-[60vh]">
-                        {activeTab === 'live' ? (
-                            <LiveChat agent={selectedAgent} />
-                        ) : (
-                            <TextChat agent={selectedAgent} />
-                        )}
+                        {activeTab === 'live' && <LiveChat agent={selectedAgent} />}
+                        {activeTab === 'text' && <TextChat agent={selectedAgent} />}
+                        {activeTab === 'mcp' && <MCPIntegration agent={selectedAgent} />}
                     </div>
                 </div>
 

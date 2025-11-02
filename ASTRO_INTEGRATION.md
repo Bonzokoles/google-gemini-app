@@ -6,9 +6,10 @@ This document provides an overview of the Gemini AI Conversation Hub's features 
 
 The AI Conversation Hub is a powerful, interactive component designed to engage your blog's visitors.
 
-*   **Dual Interaction Modes:**
+*   **Triple Interaction Modes:**
     *   **Live Conversation:** A real-time voice chat experience using the Gemini Live API. Users can speak directly to the AI and receive instant, spoken responses for a natural, fluid conversation. Includes live transcription of both user and AI speech.
     *   **Text Chat:** A feature-rich text-based chat interface with real-time streaming responses from the AI.
+    *   **MCP (WebSocket) Integration:** A simulation and guide for connecting external clients (like bots or other apps) to an AI agent via a WebSocket server. It demonstrates the protocol and provides a blueprint for a real backend implementation.
 
 *   **Advanced AI Agent System:**
     *   Users can switch between different AI **personas (Agents)**, each with a unique purpose, personality, and icon.
@@ -44,7 +45,7 @@ npx astro add react
 1.  Create a new folder inside your Astro project's `src` directory, for example: `src/components/AIAssistant/`.
 2.  Copy all the provided component and definition files into this new folder:
     *   `App.tsx`
-    *   `components/` (the whole folder: `AgentSelector.tsx`, `Icons.tsx`, `LiveChat.tsx`, `TextChat.tsx`)
+    *   `components/` (the whole folder: `AgentSelector.tsx`, `Icons.tsx`, `LiveChat.tsx`, `TextChat.tsx`, `MCPIntegration.tsx`)
     *   `constants.tsx`
     *   `types.ts`
 
@@ -126,7 +127,7 @@ Make sure your Astro project code is on a GitHub or GitLab repository.
     *   Click the **Encrypt** button to keep your key secure.
 3.  **Important**: You need to modify the code slightly to use this variable. In an Astro project, environment variables exposed to the client-side code must be prefixed with `VITE_`. You will need to change how the API key is accessed in the React code.
     
-    In the files `LiveChat.tsx` and `TextChat.tsx`, find this line:
+    In the files `LiveChat.tsx`, `TextChat.tsx`, and `MCPIntegration.tsx`, find this line:
     ```javascript
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
     ```
